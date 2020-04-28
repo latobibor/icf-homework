@@ -1,0 +1,23 @@
+@import '../style/variables';
+
+header {
+  background-color: darken($purple, 20%);
+  color: white;
+
+  @include bold-font;
+
+  display: flex;
+
+  .header-menu {
+    padding: $spacing-unit-2;
+
+    &.disclaimer {
+      flex-grow: 1;
+    }
+
+    &.menu-item {
+      background-color: $cyan;
+    }
+  }  
+}
+

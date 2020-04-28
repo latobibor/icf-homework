@@ -1,14 +1,11 @@
 @import './style/resets.scss';
 @import './style/typography.scss';
-@import './style/style-imports.scss';
 
 body {
   background-color: $body-bg;
   color: $body-color;
 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: $font-family-base;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

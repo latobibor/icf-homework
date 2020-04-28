@@ -1,5 +1,21 @@
-$base-font-size: calc(0.75rem + 0.33vw);
+@import './variables';
 
 :root {
   font-size: $base-font-size;
+}
+
+h1 {
+  font-size: calc(#{$base-font-size} * #{$ratio-4});
+}
+
+h2 {
+  font-size: calc(#{$base-font-size} * #{$ratio-3});
+}
+
+h3 {
+  font-size: calc(#{$base-font-size} * #{$ratio-2});
+}
+
+h4 {
+  font-size: calc(#{$base-font-size} * #{$ratio});
 }

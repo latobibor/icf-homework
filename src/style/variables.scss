@@ -1,0 +1,19 @@
+@import './style-imports';
+
+// sizing
+$ratio: 1.2;
+$base-font-size: calc(0.75rem + 0.33vw);
+
+$ratio-4: $ratio * $ratio * $ratio * $ratio;
+$ratio-3: $ratio * $ratio * $ratio;
+$ratio-2: $ratio * $ratio;
+
+$spacing-unit: calc(#{$base-font-size});
+$spacing-unit-2: calc(#{$spacing-unit} * #{$ratio});
+$spacing-unit-3: calc(#{$spacing-unit} * #{$ratio-2});
+$spacing-unit-4: calc(#{$spacing-unit} * #{$ratio-3});
+
+// font styles
+@mixin bold-font {
+  font-weight: 600;
+}
