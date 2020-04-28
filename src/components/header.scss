@@ -8,6 +8,11 @@ header {
 
   display: flex;
 
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
   .header-menu {
     padding: $spacing-unit-2;
 
@@ -18,6 +23,5 @@ header {
     &.menu-item {
       background-color: $cyan;
     }
-  }  
+  }
 }
-

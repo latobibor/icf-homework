@@ -1,14 +1,19 @@
-import React from "react";
-import "./header.scss";
+import React from 'react';
+import './header.scss';
+import { Link } from 'react-router-dom';
 
 export function Header() {
   return (
     <header>
       <div className="header-menu disclaimer">by András Dániel Tóth</div>
 
-      <div className="header-menu menu-item">Play!</div>
+      <Link to="/game">
+        <div className="header-menu menu-item">New game!</div>
+      </Link>
 
-      <div className="header-menu menu-item">Edit questions</div>
+      <Link to="/edit">
+        <div className="header-menu menu-item">Edit questions</div>
+      </Link>
     </header>
   );
 }
