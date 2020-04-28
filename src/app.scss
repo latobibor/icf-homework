@@ -1,8 +1,19 @@
 @import "./style/variables";
 
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   width: 75vw;
   margin: 0 auto;
 
   padding: $spacing-unit-4;
+  flex-grow: 1;
 }

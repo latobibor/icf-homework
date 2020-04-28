@@ -1,0 +1,37 @@
+@import '../style/variables';
+
+// layout
+.question {
+  display: flex;
+  flex-direction: column;
+}
+
+// prettification
+.question {
+  border-radius: 0.5rem;
+  box-shadow: 0 0 2rem 0 rgba(black, 0.15);
+  overflow: hidden;
+}
+
+.question {
+  div {
+    @include bold-font;
+  }
+
+  .question-header, .question-footer {
+    padding: $spacing-unit-2;
+
+    background-color: $gray-500;
+    color: white;
+  }
+
+  .answers {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .question-footer {
+    display: flex;
+    justify-content: center;
+  }
+}
