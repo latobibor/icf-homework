@@ -1,6 +1,6 @@
-import React from "react";
-import "./app.scss";
-import { Header } from "./components/header";
+import React from 'react';
+import './app.scss';
+import { Header } from './components/header';
 
 function App() {
   return (
