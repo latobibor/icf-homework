@@ -1,16 +1,22 @@
 @use '../../style/variables';
 
-// layout
+// as a container
 .question {
   display: flex;
   flex-direction: column;
+}
+
+// as an item inside a flex container
+.question {
+  flex-grow: 1;
 }
 
 // prettification
 .question {
   border-radius: 0.5rem;
   box-shadow: 0 0 2rem 0 rgba(black, 0.15);
-  overflow: hidden;
+  overflow: hidden;   
+  max-width: 100ch;
 }
 
 .question {

@@ -11,14 +11,14 @@ interface AnswerProps {
 export function Answer({ index, text, isRight }: AnswerProps) {
   const [clicked, setClicked] = useState(false);
 
-  let clickedOnRightAnswer;
+  let clickedOnRightAnswer = '';
 
   if (clicked) {
-    clickedOnRightAnswer = isRight ? 'right' : 'wrong';
+    clickedOnRightAnswer = ' ' + (isRight ? 'right' : 'wrong');
   }
 
   return (
-    <div className={`answer ${clickedOnRightAnswer}`} onClick={() => setClicked(true)}>
+    <div className={`answer${clickedOnRightAnswer}`} onClick={() => setClicked(true)}>
       <div className="index">{index}</div>
       <div className="answer-value">{text}</div>
     </div>
