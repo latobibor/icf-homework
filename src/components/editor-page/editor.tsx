@@ -23,25 +23,30 @@ type ReactHookFormReference = (
   ref: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | CustomElement<Inputs> | null
 ) => void;
 
-function onSubmit(data: Inputs) {
+function onSubmit(data: Inputs, event: any) {
+  event.target.reset();
   console.log(data);
 }
 
 export function Editor() {
-  const { register, handleSubmit } = useForm<Inputs>();
+  const {
+    register,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<Inputs>({ mode: 'onBlur' });
 
   return (
     <div className="editor">
       <h2>Add a new question</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-controls">
-          <QuestionEditor reference={register()} />
-          <AnswerEditor inputId={EditorInputs.AnswerA} reference={register()} />
-          <AnswerEditor inputId={EditorInputs.AnswerB} reference={register()} />
-          <AnswerEditor inputId={EditorInputs.AnswerC} reference={register()} />
-          <AnswerEditor inputId={EditorInputs.AnswerD} reference={register()} />
+          <QuestionEditor reference={register({ required: true, minLength: 10 })} />
+          <AnswerEditor inputId={EditorInputs.AnswerA} reference={register({ required: true })} />
+          <AnswerEditor inputId={EditorInputs.AnswerB} reference={register({ required: true })} />
+          <AnswerEditor inputId={EditorInputs.AnswerC} reference={register({ required: true })} />
+          <AnswerEditor inputId={EditorInputs.AnswerD} reference={register({ required: true })} />
           <div>
-            <button type="submit" className="btn btn-lg btn-primary">
+            <button type="submit" className="btn btn-lg btn-primary" disabled={!isValid}>
               Let's create it!
             </button>
           </div>
