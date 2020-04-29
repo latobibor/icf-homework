@@ -2,18 +2,4 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-
-  .actual-questions {
-    flex-basis: 400px;
-    flex-shrink: 1;
-    height: 700px;
-    background-color: whitesmoke;
-  }
-
-  .editor {
-    flex-basis: 400px;
-    background-color: whitesmoke;
-  }
 }
-
-
