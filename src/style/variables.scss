@@ -1,12 +1,13 @@
+@use 'sass:math';
 @import './utility-imports';
 
 // sizing
 $ratio: 1.2;
 $base-font-size: calc(0.75rem + 0.33vw);
 
-$ratio-4: $ratio * $ratio * $ratio * $ratio;
-$ratio-3: $ratio * $ratio * $ratio;
-$ratio-2: $ratio * $ratio;
+$ratio-4: math.pow($ratio, 4);
+$ratio-3: math.pow($ratio, 3);
+$ratio-2: math.pow($ratio, 2);
 
 $spacing-unit: calc(#{$base-font-size});
 $spacing-unit-2: calc(#{$spacing-unit} * #{$ratio});

@@ -1,4 +1,4 @@
-@import '../../style/variables';
+@use '../../style/variables';
 
 // layout
 .question {
@@ -15,13 +15,13 @@
 
 .question {
   div {
-    @include bold-font;
+    @include variables.bold-font;
   }
 
   .question-header, .question-footer {
-    padding: $spacing-unit-2;
+    padding: variables.$spacing-unit-2;
 
-    background-color: $gray-500;
+    background-color: variables.$gray-500;
     color: white;
   }
 
