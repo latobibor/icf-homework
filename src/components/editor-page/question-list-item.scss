@@ -1,0 +1,40 @@
+@use '../../style/variables';
+
+.question-list-item {
+  margin-bottom: variables.$spacing-unit;
+}
+
+// container properties
+.question-item-header {
+  display: flex;
+  align-items: center;
+}
+
+// prettifying
+.question-item-header {
+  padding: variables.$spacing-unit;
+  @include variables.gray-background;
+}
+
+// items inside
+.question-item-header {
+  label {
+    @include variables.bold-font;
+
+    flex-grow: 1;
+  }
+
+  & button {
+    color: white;
+  }
+}
+
+.answer-list > .answer {
+  display: flex;
+  align-items: center;
+
+  label {
+    padding: variables.$spacing-unit-2;
+    @include variables.question-index;
+  }
+}

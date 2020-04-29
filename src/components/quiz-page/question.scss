@@ -21,8 +21,7 @@
   .question-header, .question-footer {
     padding: variables.$spacing-unit-2;
 
-    background-color: variables.$gray-500;
-    color: white;
+    @include variables.gray-background;
   }
 
   .answers {

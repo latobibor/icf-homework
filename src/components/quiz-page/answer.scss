@@ -1,8 +1,8 @@
-@import '../../style/variables';
+@use '../../style/variables' as variables;
 
-$answer-bg-color: $gray-200;
-$right-answer-color: $green;
-$wrong-answer-color: $red;
+$answer-bg-color: variables.$gray-200;
+$right-answer-color: variables.$green;
+$wrong-answer-color: variables.$red;
 
 .answer {
   display: flex;
@@ -12,12 +12,7 @@ $wrong-answer-color: $red;
   background-color: $answer-bg-color;
 
   .index {
-    font-weight: 800;
-    font-family: monospace;
-    border-right-width: 1px;
-    border-right-color: rgba(black, 0.1);
-    border-right-style: solid;
-    background-color: darken($answer-bg-color, 5%);
+    @include variables.question-index;
   }
 
   &.right {
@@ -41,11 +36,11 @@ $wrong-answer-color: $red;
 
   .index,
   .answer-value {
-    padding: $spacing-unit-2;
+    padding: variables.$spacing-unit-2;
   }
 }
 
 .answer:hover, .answer:hover > div, .answer:hover > .index {
-  background-color: $gray-700;
+  background-color: variables.$gray-700;
   color: white;
 }

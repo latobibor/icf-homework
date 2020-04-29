@@ -18,3 +18,17 @@ $spacing-unit-4: calc(#{$spacing-unit} * #{$ratio-3});
 @mixin bold-font {
   font-weight: 600;
 }
+
+@mixin gray-background {
+  background-color: $gray-500;
+  color: white;
+}
+
+@mixin question-index {
+  font-weight: 800;
+  font-family: monospace;
+  border-right-width: 1px;
+  border-right-color: rgba(black, 0.1);
+  border-right-style: solid;
+  background-color: rgba(black, 0.05);
+}
