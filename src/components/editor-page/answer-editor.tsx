@@ -14,6 +14,7 @@ export function AnswerEditor({ inputId, register }: AnswerEditorProps) {
   return (
     <div>
       <label htmlFor={inputId}>Answer {index}</label>
+      <span>Required; at least a character long</span>
       <input
         id={inputId}
         name={inputId}
