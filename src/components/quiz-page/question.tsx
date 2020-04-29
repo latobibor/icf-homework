@@ -6,7 +6,7 @@ import { AnswerIndex } from '../../shared-models/types';
 export function Question() {
   return (
     <div className="question">
-      <div className="question-header">What is the capital of Moroshgovany?</div>
+      <div className="question-header"><h3>What is the capital of Moroshgovany?</h3></div>
       <div className="answers">
         <Answer index={AnswerIndex.A} text="Qualny" isRight />
         <Answer index={AnswerIndex.B} text="Lakshmir" />

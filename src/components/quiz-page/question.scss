@@ -24,6 +24,10 @@
     @include variables.bold-font;
   }
 
+  .question-header h3 {
+    margin: 0;
+  }
+
   .question-header, .question-footer {
     padding: variables.$spacing-unit-2;
 

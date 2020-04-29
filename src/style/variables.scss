@@ -3,7 +3,7 @@
 
 // sizing: ratio and base-font-size calculated by eye, so they are "magic numbers"
 $ratio: 1.2;
-$base-font-size: calc(0.75rem + 0.33vw);
+$base-font-size: calc(0.75rem + 0.4vw);
 
 $ratio-4: math.pow($ratio, 4);
 $ratio-3: math.pow($ratio, 3);
