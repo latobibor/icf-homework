@@ -1,17 +1,18 @@
 import React from 'react';
-import { AnswerIndex, QuestionProps, AnswerProps } from '../../shared-models/types';
+import { AnswerIndex, QuestionProps } from '../../shared-models/types';
+import { QuestionListItem } from './question-list-item';
 
 const dummyQuestions: QuestionProps[] = [
   {
-    question: 'lol?',
+    question: 'Wenn ist das Nunnstück git und Slotermeyer?',
     answers: {
       [AnswerIndex.A]: {
-        text: 'Andras',
+        text: 'Ja! Beiherhund das oder die Flipperwaldt gersput.',
         isRight: true,
       },
-      [AnswerIndex.B]: { text: 'Bela' },
-      [AnswerIndex.C]: { text: 'Cili' },
-      [AnswerIndex.D]: { text: 'Dezso' },
+      [AnswerIndex.B]: { text: 'Nein' },
+      [AnswerIndex.C]: { text: 'Was ist ein gersput?' },
+      [AnswerIndex.D]: { text: 'Monty Python' },
     },
   },
   {
@@ -26,48 +27,27 @@ const dummyQuestions: QuestionProps[] = [
       [AnswerIndex.A]: { text: 'Did you mean "what"?' },
     },
   },
+  {
+    question: 'How long does it take to cook pasta?',
+    answers: {
+      [AnswerIndex.B]: {
+        text: 'Until it still has some consistency',
+        isRight: true,
+      },
+      [AnswerIndex.C]: { text: '5 minutes' },
+      [AnswerIndex.D]: { text: '10 minutes' },
+      [AnswerIndex.A]: { text: '15 minutes' },
+    },
+  },
 ];
 
 export function QuestionList() {
   return (
     <div className="questions-list">
+      <h2>Questions currently in the quiz</h2>
       {dummyQuestions.map(({ question, answers }) => (
-        <QuestionItem question={question} answers={answers} key={question} />
+        <QuestionListItem question={question} answers={answers} key={question} />
       ))}
-    </div>
-  );
-}
-
-function QuestionItem({ question, answers }: QuestionProps) {
-  return (
-    <div className="question-item">
-      <div className="question-header">
-        <div>{question}</div>
-        <div className="delete">
-          <button className="btn btn-sm">X</button>
-        </div>
-      </div>
-      <div className="answer-list">
-        {Object.keys(answers)
-          .sort()
-          .map((key) => (
-            <AnswerItem label={key} answer={answers[key as AnswerIndex]} key={key} />
-          ))}
-      </div>
-    </div>
-  );
-}
-
-interface AnswerItemProps {
-  label: string;
-  answer: AnswerProps;
-}
-
-function AnswerItem({ label, answer: { isRight, text } }: AnswerItemProps) {
-  return (
-    <div className={`answer${isRight ? ' right' : ''}`}>
-      <label>{label}</label>
-      {text}
     </div>
   );
 }
