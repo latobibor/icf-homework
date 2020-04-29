@@ -1,5 +1,6 @@
-@import './style/resets.scss';
-@import './style/typography.scss';
+@import './style/resets';
+@import './style/typography';
+@import './style/components-import';
 
 body {
   background-color: $body-bg;
