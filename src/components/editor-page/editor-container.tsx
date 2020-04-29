@@ -1,6 +1,7 @@
 import React from 'react';
 import './editor-container.scss';
 import { QuestionList } from './question-list';
+import { Editor } from './editor';
 
 export function EditorContainer() {
   return (
@@ -9,10 +10,7 @@ export function EditorContainer() {
         <QuestionList />
       </div>
       <div className="panel">
-        <div className="editor">
-          Editor
-          <textarea cols={20}></textarea>
-        </div>
+        <Editor />
       </div>
     </div>
   );

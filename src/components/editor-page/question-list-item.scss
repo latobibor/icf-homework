@@ -30,9 +30,6 @@
 }
 
 .answer-list > .answer {
-  display: flex;
-  align-items: center;
-
   label {
     padding: variables.$spacing-unit-2;
     @include variables.question-index;

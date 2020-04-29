@@ -9,10 +9,12 @@ $ratio-4: math.pow($ratio, 4);
 $ratio-3: math.pow($ratio, 3);
 $ratio-2: math.pow($ratio, 2);
 
-$spacing-unit: calc(#{$base-font-size});
+$spacing-unit: $base-font-size;
 $spacing-unit-2: calc(#{$spacing-unit} * #{$ratio});
 $spacing-unit-3: calc(#{$spacing-unit} * #{$ratio-2});
 $spacing-unit-4: calc(#{$spacing-unit} * #{$ratio-3});
+
+$spacing-unit-sm-2: calc(#{$spacing-unit} / #{$ratio});
 
 // font styles
 @mixin bold-font {
