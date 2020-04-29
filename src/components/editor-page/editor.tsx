@@ -32,7 +32,7 @@ export function Editor() {
           <AnswerEditor inputId={EditorInputs.AnswerC} register={register} />
           <AnswerEditor inputId={EditorInputs.AnswerD} register={register} />
           <div>
-            <button type="submit" className="btn btn-lg btn-primary" disabled={!isValid}>
+            <button type="submit" className={`btn btn-lg btn-${isValid ? 'primary' : 'secondary'}`} disabled={!isValid}>
               Let's create it!
             </button>
           </div>

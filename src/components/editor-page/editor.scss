@@ -1,8 +1,6 @@
 @use '../../style/variables' as vars;
 
 .form-controls {
-  padding: vars.$spacing-unit 0;
-
   & > div {
     display: flex;
     flex-direction: column;
@@ -11,6 +9,11 @@
 
     label {
       @include vars.bold-font;
+    }
+
+    span {
+      color: vars.$gray-500;
+      font-size: 0.8em;
     }
 
     & > * {
