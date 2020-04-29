@@ -1,7 +1,7 @@
 @use 'sass:math';
 @import './utility-imports';
 
-// sizing
+// sizing: ratio and base-font-size calculated by eye, so they are "magic numbers"
 $ratio: 1.2;
 $base-font-size: calc(0.75rem + 0.33vw);
 
