@@ -1,14 +1,32 @@
 import React from 'react';
 import { AnswerIndex, QuestionProps, AnswerProps } from '../../shared-models/types';
 import './question-list-item.scss';
+import { useDispatch } from 'react-redux';
+import { DispatchAction, DeleteQuestionAction, Actions } from '../../redux/root-reducer';
 
-export function QuestionListItem({ question, answers }: QuestionProps) {
+interface QuestionListItemProps {
+  questionProps: QuestionProps;
+  index: number;
+}
+
+export function QuestionListItem({ index, questionProps: { question, answers } }: QuestionListItemProps) {
+  const dispatch = useDispatch<DispatchAction<DeleteQuestionAction>>();
+
+  function onClick() {
+    dispatch({
+      type: Actions.DeleteQuestion,
+      questionIndex: index,
+    });
+  }
+
   return (
     <div className="question-list-item">
       <div className="question-item-header">
         <label>{question}</label>
         <div className="delete">
-          <button className="btn btn-sm btn-warning">X</button>
+          <button className="btn btn-sm btn-warning" onClick={onClick}>
+            Delete
+          </button>
         </div>
       </div>
       <div className="answer-list">

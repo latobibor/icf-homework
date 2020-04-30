@@ -14,9 +14,11 @@ export function QuestionList() {
   return (
     <div className="questions-list">
       <h2>Questions currently in the quiz</h2>
-      {questions.map(({ question, answers }) => (
-        <QuestionListItem question={question} answers={answers} key={question} />
-      ))}
+      {questions.length > 0 &&
+        questions.map((questionProps, index) => (
+          <QuestionListItem questionProps={questionProps} index={index} key={index} />
+        ))}
+      {questions.length === 0 && <span>Please add questions as the quiz cannot start without questions :)</span>}
     </div>
   );
 }
