@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { QuestionProps } from '../shared-models/types';
+import { QuestionProps, AnswerIndex } from '../shared-models/types';
 import { GlobalState, initialState } from './global-state';
 
 export enum Actions {
@@ -34,6 +34,7 @@ export interface NewGameAction extends Action {
 export interface EvaluateAnswerAction extends Action {
   type: Actions.EvaluateAnswer;
   wasTheRightAnswer: boolean;
+  answerIndex: AnswerIndex;
 }
 
 export interface NextQuestionAction extends Action {
@@ -104,11 +105,12 @@ function newGame(state: GlobalState): GlobalState {
   };
 }
 
-function evaluateAnswer(state: GlobalState, { wasTheRightAnswer }: EvaluateAnswerAction): GlobalState {
+function evaluateAnswer(state: GlobalState, { wasTheRightAnswer, answerIndex }: EvaluateAnswerAction): GlobalState {
   return {
     ...state,
     score: state.score + (wasTheRightAnswer ? 1 : 0),
     isCurrentQuestionAnswered: true,
+    lastAnswer: answerIndex,
   };
 }
 
@@ -128,5 +130,6 @@ function nextQuestion(state: GlobalState): GlobalState {
     ...state,
     activeQuestionIndex: activeQuestionIndex + 1,
     isCurrentQuestionAnswered: false,
+    lastAnswer: null,
   };
 }

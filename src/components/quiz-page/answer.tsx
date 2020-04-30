@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './answer.scss';
 import { AnswerIndex } from '../../shared-models/types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { DispatchAction, EvaluateAnswerAction, Actions } from '../../redux/root-reducer';
+import { GlobalState } from '../../redux/global-state';
 
 interface AnswerProps {
   index: AnswerIndex;
@@ -11,21 +12,20 @@ interface AnswerProps {
 }
 
 export function Answer({ index, text, isRight }: AnswerProps) {
-  const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch<DispatchAction<EvaluateAnswerAction>>();
+  const lastAnswer = useSelector<GlobalState, AnswerIndex | null>(({ lastAnswer }) => lastAnswer);
 
   let clickedOnRightAnswer = '';
 
-  if (clicked) {
+  if (lastAnswer === index) {
     clickedOnRightAnswer = ' ' + (isRight ? 'right' : 'wrong');
   }
 
   function onClick() {
-    setClicked(true);
-
     dispatch({
       type: Actions.EvaluateAnswer,
       wasTheRightAnswer: !!isRight,
+      answerIndex: index
     });
   }
 

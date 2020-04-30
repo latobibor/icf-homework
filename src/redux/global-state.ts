@@ -45,6 +45,7 @@ export type GlobalState = {
   score: number;
   gameOver: boolean;
   isCurrentQuestionAnswered: boolean;
+  lastAnswer: AnswerIndex | null;
 };
 
 export const initialState: GlobalState = {
@@ -53,4 +54,5 @@ export const initialState: GlobalState = {
   score: 0,
   gameOver: false,
   isCurrentQuestionAnswered: false,
+  lastAnswer: null,
 };
