@@ -4,15 +4,13 @@ import { useForm } from 'react-hook-form';
 import { EditorInputs } from './shared-types';
 import { AnswerEditor } from './answer-editor';
 import { QuestionEditor } from './question-editor';
+import { useDispatch } from 'react-redux';
+import { DispatchAction, AddQuestionAction, Actions } from '../../redux/root-reducer';
+import { QuestionProps, AnswerIndex } from '../../shared-models/types';
 
 type Inputs = {
   [name in EditorInputs]: string;
 };
-
-function onSubmit(data: Inputs, { target }: any) {
-  target.reset();
-  console.log(data);
-}
 
 export function Editor() {
   const {
@@ -20,6 +18,45 @@ export function Editor() {
     handleSubmit,
     formState: { isValid },
   } = useForm<Inputs>({ mode: 'onBlur' });
+
+  const dispatch = useDispatch<DispatchAction<AddQuestionAction>>();
+
+  function onSubmit(data: Inputs, { target }: any) {
+    const radioButtonValue = data['editor-answer-radio'] as AnswerIndex;
+
+    function isRightAnswer(answerIndex: AnswerIndex) {
+      return answerIndex === radioButtonValue;
+    }
+
+    const question: QuestionProps = {
+      question: data['editor-question'],
+      answers: {
+        [AnswerIndex.A]: {
+          text: data['editor-answer-a'],
+          isRight: isRightAnswer(AnswerIndex.A),
+        },
+        [AnswerIndex.B]: {
+          text: data['editor-answer-b'],
+          isRight: isRightAnswer(AnswerIndex.B),
+        },
+        [AnswerIndex.C]: {
+          text: data['editor-answer-c'],
+          isRight: isRightAnswer(AnswerIndex.C),
+        },
+        [AnswerIndex.D]: {
+          text: data['editor-answer-d'],
+          isRight: isRightAnswer(AnswerIndex.D),
+        },
+      },
+    };
+
+    dispatch({
+      type: Actions.AddQuestion,
+      question,
+    });
+
+    target.reset();
+  }
 
   return (
     <div className="editor">
