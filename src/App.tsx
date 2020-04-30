@@ -1,6 +1,6 @@
 import React from 'react';
 import './app.scss';
-import { Header } from './components/quiz-page/header';
+import { Header } from './components/header/header';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { GameContainer } from './components/quiz-page/game-container';
 import { EditorContainer } from './components/editor-page/editor-container';
