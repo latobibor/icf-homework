@@ -1,0 +1,5 @@
+@use '../../style/variables' as vars;
+
+.game-over {
+  color: vars.$purple;
+}

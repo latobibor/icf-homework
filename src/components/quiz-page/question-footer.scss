@@ -1,0 +1,15 @@
+@use '../../style/variables' as vars;
+
+.question-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: vars.$spacing-unit-2;
+
+  @include vars.gray-background;
+
+  & label {
+    margin-right: vars.$spacing-unit-sm-4;
+  }
+}

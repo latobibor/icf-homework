@@ -1,0 +1,22 @@
+@use '../../style/variables' as vars;
+
+.form-controls {
+  & > div {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: vars.$spacing-unit;
+
+    label {
+      @include vars.bold-font;
+    }
+
+    & > * {
+      margin-bottom: vars.$spacing-unit-sm-2;
+    }
+
+    input {
+      font-family: inherit;
+    }
+  }
+}

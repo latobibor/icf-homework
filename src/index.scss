@@ -1,0 +1,14 @@
+@use './style/utilities.scss';
+@use './style/resets';
+@use './style/typography';
+@import './style/variables';
+@import './style/components-import';
+
+body {
+  background-color: $body-bg;
+  color: $body-color;
+
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,14 @@
+@use '../../style/variables' as vars;
+
+.empty-page-container {
+  @include vars.double-pane-layout;
+
+  .form-controls {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      margin-bottom: vars.$spacing-unit-sm-2;
+    }
+  }
+}

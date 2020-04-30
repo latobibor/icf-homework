@@ -1,0 +1,10 @@
+@use './variables' as vars;
+
+.disable-click {
+  pointer-events: none;
+}
+
+.tip {
+  color: vars.$gray-500;
+  font-size: 0.8em;
+}

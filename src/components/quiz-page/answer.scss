@@ -1,0 +1,46 @@
+@use '../../style/variables' as variables;
+
+$answer-bg-color: variables.$gray-200;
+$right-answer-color: variables.$green;
+$wrong-answer-color: variables.$red;
+
+.answer {
+  display: flex;
+  flex-basis: 50%;
+  overflow: hidden;
+
+  background-color: $answer-bg-color;
+
+  .index {
+    @include variables.question-index;
+  }
+
+  &.right {
+    background-color: lighten($right-answer-color, 12%);
+    color: white;
+
+    .index {
+      background-color: $right-answer-color;
+    }
+  }
+
+  &.wrong {
+    background-color: $wrong-answer-color;
+    color: white;
+
+    .index {
+      background-color: darken($wrong-answer-color, 5%);
+
+    }
+  }
+
+  .index,
+  .answer-value {
+    padding: variables.$spacing-unit-2;
+  }
+}
+
+.answer:hover, .answer:hover > div, .answer:hover > .index {
+  background-color: variables.$gray-700;
+  color: white;
+}

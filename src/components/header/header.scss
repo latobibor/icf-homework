@@ -1,0 +1,33 @@
+@use '../../style/variables' as vars;
+
+header {
+  background-color: darken(vars.$purple, 20%);
+  color: white;
+
+  @include vars.bold-font;
+
+  display: flex;
+
+  .header-menu {
+    padding: vars.$spacing-unit-2;
+
+    &.disclaimer {
+      flex-grow: 1;
+    }
+
+    &.menu-item {
+      background-color: vars.$cyan;
+    }
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a.disable-click {
+    & .menu-item {
+      background-color: vars.$gray-400;
+    }
+  }
+}

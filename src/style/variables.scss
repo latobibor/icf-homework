@@ -1,0 +1,52 @@
+@use 'sass:math';
+@import './utility-imports';
+
+// sizing: ratio and base-font-size calculated by eye, so they are "magic numbers"
+$ratio: 1.2;
+$base-font-size: calc(0.85rem + 0.1vw);
+
+$ratio-4: math.pow($ratio, 4);
+$ratio-3: math.pow($ratio, 3);
+$ratio-2: math.pow($ratio, 2);
+
+$spacing-unit: $base-font-size;
+$spacing-unit-2: calc(#{$spacing-unit} * #{$ratio});
+$spacing-unit-3: calc(#{$spacing-unit} * #{$ratio-2});
+$spacing-unit-4: calc(#{$spacing-unit} * #{$ratio-3});
+
+$spacing-unit-sm-2: calc(#{$spacing-unit} / #{$ratio});
+$spacing-unit-sm-3: calc(#{$spacing-unit} / #{$ratio-2});
+$spacing-unit-sm-4: calc(#{$spacing-unit} / #{$ratio-3});
+
+// font styles
+@mixin bold-font {
+  font-weight: 600;
+}
+
+@mixin gray-background {
+  background-color: $gray-500;
+  color: white;
+}
+
+@mixin question-index {
+  font-weight: 800;
+  font-family: monospace;
+  border-right-width: 1px;
+  border-right-color: rgba(black, 0.1);
+  border-right-style: solid;
+  background-color: rgba(black, 0.05);
+}
+
+@mixin double-pane-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  & > div {
+    min-width: 300px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 40%;
+    padding: 0 $spacing-unit-2;
+  }
+}

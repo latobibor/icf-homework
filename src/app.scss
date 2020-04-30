@@ -1,0 +1,17 @@
+@import "./style/variables";
+
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  padding: 0 4vw;
+  flex-grow: 1;
+}
