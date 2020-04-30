@@ -1,6 +1,7 @@
 import { Reducer } from 'redux';
 import { QuestionProps, AnswerIndex } from '../shared-models/types';
 import { GlobalState, initialState } from './global-state';
+import { saveQuestions } from './storage';
 
 export enum Actions {
   _Init = '@@redux/INIT',
@@ -80,18 +81,25 @@ export const rootReducer: Reducer<GlobalState, CombinedActionType> = (
 };
 
 function addQuestion(state: GlobalState, { question }: AddQuestionAction): GlobalState {
+  const newQuestions = [...state.questions, question];
+
+  saveQuestions(newQuestions);
+
   return {
     ...state,
-    questions: [...state.questions, question],
+    questions: newQuestions,
   };
 }
 
 function deleteQuestion(state: GlobalState, { questionIndex }: DeleteQuestionAction): GlobalState {
   const { questions } = state;
+  const newQuestions = [...questions.slice(0, questionIndex), ...questions.slice(questionIndex + 1)];
+
+  saveQuestions(newQuestions);
 
   return {
     ...state,
-    questions: [...questions.slice(0, questionIndex), ...questions.slice(questionIndex + 1)],
+    questions: newQuestions,
   };
 }
 
