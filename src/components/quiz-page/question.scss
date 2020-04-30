@@ -28,7 +28,7 @@
     margin: 0;
   }
 
-  .question-header, .question-footer {
+  .question-header {
     padding: variables.$spacing-unit-2;
 
     @include variables.gray-background;
@@ -37,10 +37,5 @@
   .answers {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  .question-footer {
-    display: flex;
-    justify-content: center;
   }
 }

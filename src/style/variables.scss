@@ -15,6 +15,8 @@ $spacing-unit-3: calc(#{$spacing-unit} * #{$ratio-2});
 $spacing-unit-4: calc(#{$spacing-unit} * #{$ratio-3});
 
 $spacing-unit-sm-2: calc(#{$spacing-unit} / #{$ratio});
+$spacing-unit-sm-3: calc(#{$spacing-unit} / #{$ratio-2});
+$spacing-unit-sm-4: calc(#{$spacing-unit} / #{$ratio-3});
 
 // font styles
 @mixin bold-font {
