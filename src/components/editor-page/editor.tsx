@@ -16,39 +16,14 @@ export function Editor() {
   const {
     register,
     handleSubmit,
+    triggerValidation,
     formState: { isValid },
-  } = useForm<Inputs>({ mode: 'onBlur' });
+  } = useForm<Inputs>({ mode: 'onChange' });
 
   const dispatch = useDispatch<DispatchAction<AddQuestionAction>>();
 
   function onSubmit(data: Inputs, { target }: any) {
-    const radioButtonValue = data['editor-answer-radio'] as AnswerIndex;
-
-    function isRightAnswer(answerIndex: AnswerIndex) {
-      return answerIndex === radioButtonValue;
-    }
-
-    const question: QuestionProps = {
-      question: data['editor-question'],
-      answers: {
-        [AnswerIndex.A]: {
-          text: data['editor-answer-a'],
-          isRight: isRightAnswer(AnswerIndex.A),
-        },
-        [AnswerIndex.B]: {
-          text: data['editor-answer-b'],
-          isRight: isRightAnswer(AnswerIndex.B),
-        },
-        [AnswerIndex.C]: {
-          text: data['editor-answer-c'],
-          isRight: isRightAnswer(AnswerIndex.C),
-        },
-        [AnswerIndex.D]: {
-          text: data['editor-answer-d'],
-          isRight: isRightAnswer(AnswerIndex.D),
-        },
-      },
-    };
+    const question = createQuestionPropFromInputData(data);
 
     dispatch({
       type: Actions.AddQuestion,
@@ -56,6 +31,7 @@ export function Editor() {
     });
 
     target.reset();
+    triggerValidation();
   }
 
   return (
@@ -77,4 +53,34 @@ export function Editor() {
       </form>
     </div>
   );
+}
+
+function createQuestionPropFromInputData(data: Inputs): QuestionProps {
+  const radioButtonValue = data['editor-answer-radio'] as AnswerIndex;
+
+  function isRightAnswer(answerIndex: AnswerIndex) {
+    return answerIndex === radioButtonValue;
+  }
+
+  return {
+    question: data['editor-question'],
+    answers: {
+      [AnswerIndex.A]: {
+        text: data['editor-answer-a'],
+        isRight: isRightAnswer(AnswerIndex.A),
+      },
+      [AnswerIndex.B]: {
+        text: data['editor-answer-b'],
+        isRight: isRightAnswer(AnswerIndex.B),
+      },
+      [AnswerIndex.C]: {
+        text: data['editor-answer-c'],
+        isRight: isRightAnswer(AnswerIndex.C),
+      },
+      [AnswerIndex.D]: {
+        text: data['editor-answer-d'],
+        isRight: isRightAnswer(AnswerIndex.D),
+      },
+    },
+  };
 }
