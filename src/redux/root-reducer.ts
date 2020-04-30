@@ -8,6 +8,7 @@ export enum Actions {
   AddQuestion = 'ADD QUESTION',
   DeleteQuestion = 'DELETE QUESTION',
   NewGame = 'NEW GAME',
+  StartGame = 'START GAME',
   EvaluateAnswer = 'EVALUATE ANSWER',
   NextQuestion = 'NEXT QUESTION',
 }
@@ -30,6 +31,10 @@ export interface DeleteQuestionAction extends Action {
 
 export interface NewGameAction extends Action {
   type: Actions.NewGame;
+}
+
+export interface StartGameAction extends Action {
+  type: Actions.StartGame;
   player: string;
 }
 
@@ -53,6 +58,7 @@ export type CombinedActionType =
   | AddQuestionAction
   | DeleteQuestionAction
   | NewGameAction
+  | StartGameAction
   | EvaluateAnswerAction
   | NextQuestionAction
   | _InitAction;
@@ -71,7 +77,9 @@ export const rootReducer: Reducer<GlobalState, CombinedActionType> = (
     case Actions.DeleteQuestion:
       return deleteQuestion(state, action);
     case Actions.NewGame:
-      return newGame(state, action);
+      return newGame(state);
+    case Actions.StartGame:
+      return startGame(state, action);
     case Actions.EvaluateAnswer:
       return evaluateAnswer(state, action);
     case Actions.NextQuestion:
@@ -104,14 +112,22 @@ function deleteQuestion(state: GlobalState, { questionIndex }: DeleteQuestionAct
   };
 }
 
-function newGame(state: GlobalState, { player }: NewGameAction): GlobalState {
-  // let's preserve questions
+function newGame(state: GlobalState): GlobalState {
+  // let's preserve the former questions
   const { questions } = state;
 
   return {
     ...initialState,
     questions,
+    isInGameMode: false,
+  };
+}
+
+function startGame(state: GlobalState, { player }: StartGameAction): GlobalState {
+  return {
+    ...state,
     player,
+    isInGameMode: true,
   };
 }
 

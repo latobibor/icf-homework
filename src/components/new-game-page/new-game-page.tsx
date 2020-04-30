@@ -1,10 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import './new-game-page.scss';
 
-import { DispatchAction, NewGameAction, Actions } from '../../redux/root-reducer';
+import { DispatchAction, Actions, StartGameAction } from '../../redux/root-reducer';
 import { GlobalState } from '../../redux/global-state';
 
 const nameInput = 'player';
@@ -21,13 +20,13 @@ export function NewGamePage() {
   } = useForm<Inputs>({ mode: 'onChange' });
 
   const isThereAnyQuestion = useSelector<GlobalState, boolean>(({ questions }) => questions.length > 0);
-  const dispatch = useDispatch<DispatchAction<NewGameAction>>();
+  const dispatch = useDispatch<DispatchAction<StartGameAction>>();
 
   function onSubmit(data: Inputs) {
     const player = data.player;
 
     dispatch({
-      type: Actions.NewGame,
+      type: Actions.StartGame,
       player,
     });
   }
@@ -53,11 +52,9 @@ export function NewGamePage() {
               className="form-control"
               ref={register({ required: true, minLength: 2 })}
             />
-            <Link to="/game" className={shouldNewGameBeActive ? '' : 'disabled-click'}>
-              <button className="btn btn-lg btn-primary" type="submit" disabled={!shouldNewGameBeActive}>
-                Start Game
-              </button>
-            </Link>
+            <button className="btn btn-lg btn-primary" type="submit" disabled={!shouldNewGameBeActive}>
+              Start Game
+            </button>
           </div>
         </form>
       </div>

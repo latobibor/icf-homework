@@ -2,9 +2,8 @@ import React from 'react';
 import './app.scss';
 import { Header } from './components/header/header';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { GameContainer } from './components/quiz-page/game-container';
 import { EditorContainer } from './components/editor-page/editor-container';
-import { NewGamePage } from './components/new-game-page/new-game-page';
+import { NameOrGame } from './components/name-or-game';
 
 function App() {
   return (
@@ -14,10 +13,7 @@ function App() {
         <div className="app">
           <Switch>
             <Route path="/" exact>
-              <NewGamePage />
-            </Route>
-            <Route path="/game">
-              <GameContainer />
+              <NameOrGame />
             </Route>
             <Route path="/edit">
               <EditorContainer />

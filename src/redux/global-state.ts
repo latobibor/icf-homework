@@ -10,6 +10,7 @@ export type GlobalState = {
   isCurrentQuestionAnswered: boolean;
   lastAnswer: AnswerIndex | null;
   player: string | undefined;
+  isInGameMode: boolean;
 };
 
 const localStorageQuestions = loadQuestions();
@@ -22,4 +23,5 @@ export const initialState: GlobalState = {
   gameOver: false,
   isCurrentQuestionAnswered: false,
   lastAnswer: null,
+  isInGameMode: false,
 };
