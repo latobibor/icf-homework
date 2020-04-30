@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { QuestionProps, AnswerIndex } from '../shared-models/types';
-import { GlobalState, initialState } from './global-state';
+import { GlobalState, initialState, initialGameState } from './global-state';
 import { saveQuestions } from './storage';
 
 export enum Actions {
@@ -113,13 +113,9 @@ function deleteQuestion(state: GlobalState, { questionIndex }: DeleteQuestionAct
 }
 
 function newGame(state: GlobalState): GlobalState {
-  // let's preserve the former questions
-  const { questions } = state;
-
   return {
-    ...initialState,
-    questions,
-    isInGameMode: false,
+    ...state,
+    ...initialGameState,
   };
 }
 

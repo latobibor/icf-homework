@@ -2,9 +2,9 @@ import { QuestionProps, AnswerIndex } from '../shared-models/types';
 import { defaultQuestions } from './default-questions';
 import { loadQuestions } from './storage';
 
-export type GlobalState = {
+// states unique for every game
+export type PerGameState = {
   activeQuestionIndex: number;
-  questions: QuestionProps[];
   score: number;
   gameOver: boolean;
   isCurrentQuestionAnswered: boolean;
@@ -13,15 +13,24 @@ export type GlobalState = {
   isInGameMode: boolean;
 };
 
+export type ApplicationWideState = { questions: QuestionProps[] };
+
+export type GlobalState = PerGameState & ApplicationWideState;
+
 const localStorageQuestions = loadQuestions();
 
-export const initialState: GlobalState = {
+export const initialGameState = {
   player: undefined,
   activeQuestionIndex: 0,
-  questions: localStorageQuestions ? localStorageQuestions : defaultQuestions,
   score: 0,
   gameOver: false,
   isCurrentQuestionAnswered: false,
   lastAnswer: null,
   isInGameMode: false,
 };
+
+export const initialQuizState = {
+  questions: localStorageQuestions ? localStorageQuestions : defaultQuestions,
+};
+
+export const initialState: GlobalState = Object.assign({}, initialGameState, initialQuizState);
