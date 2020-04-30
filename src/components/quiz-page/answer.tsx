@@ -21,6 +21,10 @@ export function Answer({ index, text, isRight }: AnswerProps) {
     clickedOnRightAnswer = ' ' + (isRight ? 'right' : 'wrong');
   }
 
+  if (lastAnswer !== null && isRight) {
+    clickedOnRightAnswer = ' right';
+  }
+
   function onClick() {
     dispatch({
       type: Actions.EvaluateAnswer,
