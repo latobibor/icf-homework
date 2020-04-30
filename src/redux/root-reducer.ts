@@ -8,6 +8,7 @@ export enum Actions {
   DeleteQuestion = 'DELETE QUESTION',
   NewGame = 'NEW GAME',
   EvaluateAnswer = 'EVALUATE ANSWER',
+  NextQuestion = 'NEXT QUESTION',
 }
 
 export interface Action {
@@ -35,6 +36,10 @@ export interface EvaluateAnswerAction extends Action {
   wasTheRightAnswer: boolean;
 }
 
+export interface NextQuestionAction extends Action {
+  type: Actions.NextQuestion;
+}
+
 // built-in redux action
 export interface _InitAction extends Action {
   type: Actions._Init;
@@ -46,6 +51,7 @@ export type CombinedActionType =
   | DeleteQuestionAction
   | NewGameAction
   | EvaluateAnswerAction
+  | NextQuestionAction
   | _InitAction;
 
 export const rootReducer: Reducer<GlobalState, CombinedActionType> = (
@@ -65,6 +71,8 @@ export const rootReducer: Reducer<GlobalState, CombinedActionType> = (
       return newGame(state);
     case Actions.EvaluateAnswer:
       return evaluateAnswer(state, action);
+    case Actions.NextQuestion:
+      return nextQuestion(state);
     default:
       throw new Error(`Event name ${action.type} was not recognized; please implement it`);
   }
@@ -98,5 +106,23 @@ function evaluateAnswer(state: GlobalState, { wasTheRightAnswer }: EvaluateAnswe
   return {
     ...state,
     score: state.score + (wasTheRightAnswer ? 1 : 0),
+  };
+}
+
+function nextQuestion(state: GlobalState) {
+  const { questions, activeQuestionIndex } = state;
+
+  const gameOver = questions.length - 1 === activeQuestionIndex;
+
+  if (gameOver) {
+    return {
+      ...state,
+      gameOver,
+    };
+  }
+
+  return {
+    ...state,
+    activeQuestionIndex: activeQuestionIndex + 1,
   };
 }

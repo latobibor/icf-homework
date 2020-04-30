@@ -25,7 +25,7 @@ export function Question() {
             const answerIndex = key as AnswerIndex;
             const { text, isRight } = answers[answerIndex];
 
-            return <Answer index={answerIndex} text={text} isRight={isRight} />;
+            return <Answer index={answerIndex} text={text} isRight={isRight} key={key} />;
           })}
       </div>
       <QuestionFooter />
