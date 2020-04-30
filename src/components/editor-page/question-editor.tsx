@@ -26,7 +26,7 @@ export function QuestionEditor({ register }: QuestionEditorProps) {
   return (
     <div>
       <label htmlFor={EditorInputs.Question}>The question</label>
-      <span>{lengthTooltip}</span>
+      <span className="tip">{lengthTooltip}</span>
       <input
         id={EditorInputs.Question}
         name={EditorInputs.Question}

@@ -11,11 +11,6 @@
       @include vars.bold-font;
     }
 
-    span {
-      color: vars.$gray-500;
-      font-size: 0.8em;
-    }
-
     & > * {
       margin-bottom: vars.$spacing-unit-sm-2;
     }
