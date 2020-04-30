@@ -95,11 +95,12 @@ function deleteQuestion(state: GlobalState, { questionIndex }: DeleteQuestionAct
 }
 
 function newGame(state: GlobalState): GlobalState {
+  // let's preserve questions
+  const { questions } = state;
+
   return {
-    ...state,
-    score: 0,
-    gameOver: false,
-    activeQuestionIndex: 0,
+    ...initialState,
+    questions,
   };
 }
 
@@ -107,10 +108,11 @@ function evaluateAnswer(state: GlobalState, { wasTheRightAnswer }: EvaluateAnswe
   return {
     ...state,
     score: state.score + (wasTheRightAnswer ? 1 : 0),
+    isCurrentQuestionAnswered: true,
   };
 }
 
-function nextQuestion(state: GlobalState) {
+function nextQuestion(state: GlobalState): GlobalState {
   const { questions, activeQuestionIndex } = state;
 
   const gameOver = questions.length - 1 === activeQuestionIndex;
@@ -125,5 +127,6 @@ function nextQuestion(state: GlobalState) {
   return {
     ...state,
     activeQuestionIndex: activeQuestionIndex + 1,
+    isCurrentQuestionAnswered: false,
   };
 }

@@ -44,6 +44,7 @@ export type GlobalState = {
   questions: QuestionProps[];
   score: number;
   gameOver: boolean;
+  isCurrentQuestionAnswered: boolean;
 };
 
 export const initialState: GlobalState = {
@@ -51,4 +52,5 @@ export const initialState: GlobalState = {
   questions: dummyQuestions,
   score: 0,
   gameOver: false,
+  isCurrentQuestionAnswered: false,
 };

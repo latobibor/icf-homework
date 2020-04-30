@@ -1,11 +1,15 @@
 import React from 'react';
 import './question-footer.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { DispatchAction, Actions, NextQuestionAction } from '../../redux/root-reducer';
 import { Score } from './score';
+import { GlobalState } from '../../redux/global-state';
 
 export function QuestionFooter() {
   const dispatch = useDispatch<DispatchAction<NextQuestionAction>>();
+  const isCurrentQuestionAnswered = useSelector<GlobalState, boolean>(
+    ({ isCurrentQuestionAnswered }) => isCurrentQuestionAnswered
+  );
 
   function onClick() {
     dispatch({ type: Actions.NextQuestion });
@@ -18,7 +22,7 @@ export function QuestionFooter() {
         <Score />
       </div>
       <div>
-        {true && (
+        {isCurrentQuestionAnswered && (
           <button className="btn btn-primary" onClick={onClick}>
             Next question
           </button>
