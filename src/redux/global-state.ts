@@ -9,11 +9,13 @@ export type GlobalState = {
   gameOver: boolean;
   isCurrentQuestionAnswered: boolean;
   lastAnswer: AnswerIndex | null;
+  player: string | undefined;
 };
 
 const localStorageQuestions = loadQuestions();
 
 export const initialState: GlobalState = {
+  player: undefined,
   activeQuestionIndex: 0,
   questions: localStorageQuestions ? localStorageQuestions : defaultQuestions,
   score: 0,

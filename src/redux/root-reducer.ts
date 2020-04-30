@@ -30,6 +30,7 @@ export interface DeleteQuestionAction extends Action {
 
 export interface NewGameAction extends Action {
   type: Actions.NewGame;
+  player: string;
 }
 
 export interface EvaluateAnswerAction extends Action {
@@ -70,7 +71,7 @@ export const rootReducer: Reducer<GlobalState, CombinedActionType> = (
     case Actions.DeleteQuestion:
       return deleteQuestion(state, action);
     case Actions.NewGame:
-      return newGame(state);
+      return newGame(state, action);
     case Actions.EvaluateAnswer:
       return evaluateAnswer(state, action);
     case Actions.NextQuestion:
@@ -103,13 +104,14 @@ function deleteQuestion(state: GlobalState, { questionIndex }: DeleteQuestionAct
   };
 }
 
-function newGame(state: GlobalState): GlobalState {
+function newGame(state: GlobalState, { player }: NewGameAction): GlobalState {
   // let's preserve questions
   const { questions } = state;
 
   return {
     ...initialState,
     questions,
+    player,
   };
 }
 
