@@ -1,27 +1,35 @@
-@import '../../style/variables';
+@use '../../style/variables' as vars;
 
 header {
-  background-color: darken($purple, 20%);
+  background-color: darken(vars.$purple, 20%);
   color: white;
 
-  @include bold-font;
+  @include vars.bold-font;
 
   display: flex;
 
-  a {
-    color: white;
-    text-decoration: none;
-  }
-
   .header-menu {
-    padding: $spacing-unit-2;
+    padding: vars.$spacing-unit-2;
 
     &.disclaimer {
       flex-grow: 1;
     }
 
     &.menu-item {
-      background-color: $cyan;
+      background-color: vars.$cyan;
+    }
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a.disabled {
+    pointer-events: none;
+
+    & .menu-item {
+      background-color: vars.$gray-400;
     }
   }
 }
