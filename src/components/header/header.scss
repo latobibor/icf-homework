@@ -25,9 +25,7 @@ header {
     text-decoration: none;
   }
 
-  a.disabled {
-    pointer-events: none;
-
+  a.disable-click {
     & .menu-item {
       background-color: vars.$gray-400;
     }

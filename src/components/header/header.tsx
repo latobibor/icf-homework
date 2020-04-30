@@ -24,7 +24,7 @@ export function Header() {
     <header>
       <div className="header-menu disclaimer">by András Dániel Tóth</div>
 
-      <Link to="/game" className={`${shouldNewGameBeActive ? '' : 'disabled'}`}>
+      <Link to="/game" className={`${shouldNewGameBeActive ? '' : 'disable-click'}`}>
         <div className="header-menu menu-item" onClick={onNewGameClick}>
           New game!
         </div>
