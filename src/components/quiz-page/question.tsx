@@ -2,6 +2,7 @@ import React from 'react';
 import './question.scss';
 import { Answer } from './answer';
 import { AnswerIndex } from '../../shared-models/types';
+import { QuestionFooter } from './question-footer';
 
 export function Question() {
   return (
@@ -13,9 +14,7 @@ export function Question() {
         <Answer index={AnswerIndex.C} text="Birya" />
         <Answer index={AnswerIndex.D} text="Lequir" />
       </div>
-      <div className="question-footer">
-        <button className="btn btn-primary">Next question</button>
-      </div>
+      <QuestionFooter />
     </div>
   );
 }
