@@ -4,6 +4,12 @@
   font-size: $base-font-size;
 }
 
+@media screen and (min-width: 1000px) {
+  :root {
+    font-size: calc(#{$base-font-size} + 0.2vw);
+  }
+}
+
 h1 {
   font-size: calc(#{$base-font-size} * #{$ratio-4});
 }
