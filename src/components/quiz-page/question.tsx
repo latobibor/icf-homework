@@ -12,13 +12,16 @@ function getCurrentQuestion({ questions, activeQuestionIndex }: GlobalState): Qu
 
 export function Question() {
   const { question, answers } = useSelector<GlobalState, QuestionProps>(getCurrentQuestion);
+  const isCurrentQuestionAnswered = useSelector<GlobalState, boolean>(
+    ({ isCurrentQuestionAnswered }) => isCurrentQuestionAnswered
+  );
 
   return (
     <div className="question">
       <div className="question-header">
         <h3>{question}</h3>
       </div>
-      <div className="answers">
+      <div className={`answers${isCurrentQuestionAnswered ? ' disable-click' : ''}`}>
         {Object.keys(answers)
           .sort()
           .map((key) => {
