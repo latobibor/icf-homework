@@ -99,6 +99,7 @@ function newGame(state: GlobalState): GlobalState {
     ...state,
     score: 0,
     gameOver: false,
+    activeQuestionIndex: 0,
   };
 }
 
