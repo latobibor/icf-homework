@@ -3,3 +3,14 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
+import 'jest-localstorage-mock';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
+
+(global as any).MutationObserver = class MutationObserver {
+  constructor(callback: any) {}
+  disconnect() {}
+  observe(element: any, initObject: any) {}
+};
