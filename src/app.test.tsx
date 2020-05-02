@@ -1,33 +1,44 @@
 import React from 'react';
-import App from './app';
+import { AppInsideRouter } from './app';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import { NameOrGame } from './components/name-or-game';
-import { act } from 'react-dom/test-utils';
+import { EditorContainer } from './components/editor-page/editor-container';
 
 jest.mock('./components/new-game-page/new-game-page', () => ({
   NewGamePage: () => <div>NewGamePage</div>,
 }));
 
-let app: any;
+jest.mock('./components/editor-page/editor-container', () => ({
+  EditorContainer: () => <div>EditorContainer</div>,
+}));
 
 describe('main router test', () => {
   test('renders NameOrGame component on "/" path', () => {
-    renderApp('/');
+    const app = renderApp('/');
     expect(app.find(NameOrGame)).toHaveLength(1);
+  });
+
+  test('renders EditorContainer component on "/edit" path', () => {
+    const app = renderApp('/edit');
+    expect(app.find(EditorContainer)).toHaveLength(1);
+  });
+
+  test('renders EditorContainer but not NameOrGame component on "/edit" path', () => {
+    const app = renderApp('/edit');
+    expect(app.find(EditorContainer)).toHaveLength(1);
+    expect(app.find(NameOrGame)).toHaveLength(0);
   });
 });
 
 function renderApp(initialEntry: string) {
-  act(() => {
-    app = mount(
+  return mount(
       <Provider store={store}>
         <MemoryRouter initialEntries={[initialEntry]}>
-          <App />
+          <AppInsideRouter />
         </MemoryRouter>
       </Provider>
     );
-  });
 }
