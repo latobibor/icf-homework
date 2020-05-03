@@ -1,4 +1,4 @@
-# Take home test ICF
+# Example React + Redux "Quiz game" app
 Hello and welcome to my take home test application. To test it out just follow the setup instructions.
 You can read below the decisions I have made.
 
