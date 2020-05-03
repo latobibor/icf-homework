@@ -24,6 +24,10 @@ You should have `node.js` installed on your machine.
 ## Known issues
 If you test the application on mobile sometimes the answers in the quiz must be pressed twice.
 
-## Missing but important: testing
-Since I have run out of time I set for myself for this task I have not done testing. I am planning to add tests to this repository later tonight.
-However if you want to check out how I write tests you can take a look at this file: https://github.com/latobibor/esys-homework/blob/master/src/date-utils.test.ts 
+## Update on 2020-05-03: I have added tests
+By Thursday I did not have tests yet. I have added them today. I did not cover all functionality but I have strategically made examples:
+1. **`react-router` test**: For testing routing functionality please refer this file: https://github.com/latobibor/icf-homework/blob/testing-and-refactoring/src/app.test.tsx
+1. **`Redux` reducer tests**: For testing redux reducers please refer to this file: https://github.com/latobibor/icf-homework/blob/master/src/redux/root-reducer.test.ts
+1. **Component test with UI interaction and `redux` action dispatching**: Please check this file: https://github.com/latobibor/icf-homework/blob/master/src/components/new-game-page/new-game-page.test.tsx
+
+For TDD style tests please refer to my other repository: https://github.com/latobibor/esys-homework/blob/master/src/date-utils.test.ts 

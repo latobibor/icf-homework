@@ -9,19 +9,27 @@ function App() {
   return (
     <div className="main-container">
       <Router>
-        <Header />
-        <div className="app">
-          <Switch>
-            <Route path="/" exact>
-              <NameOrGame />
-            </Route>
-            <Route path="/edit">
-              <EditorContainer />
-            </Route>
-          </Switch>
-        </div>
+        <AppInsideRouter />
       </Router>
     </div>
+  );
+}
+
+export function AppInsideRouter() {
+  return (
+    <>
+      <Header />
+      <div className="app">
+        <Switch>
+          <Route path="/" exact>
+            <NameOrGame />
+          </Route>
+          <Route path="/edit">
+            <EditorContainer />
+          </Route>
+        </Switch>
+      </div>
+    </>
   );
 }
 
