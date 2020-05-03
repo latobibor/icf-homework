@@ -6,10 +6,10 @@ import './new-game-page.scss';
 import { DispatchAction, Actions, StartGameAction } from '../../redux/root-reducer';
 import { GlobalState } from '../../redux/global-state';
 
-const nameInput = 'player';
+const nameInputId = 'player';
 
 type Inputs = {
-  [nameInput]: string;
+  [nameInputId]: string;
 };
 
 export function NewGamePage() {
@@ -31,7 +31,7 @@ export function NewGamePage() {
     });
   }
 
-  const shouldNewGameBeActive = isThereAnyQuestion && formIsValid;
+  const shouldStartGameBeActive = isThereAnyQuestion && formIsValid;
 
   return (
     <div className="empty-page-container">
@@ -42,17 +42,18 @@ export function NewGamePage() {
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-controls">
-            <label htmlFor={nameInput}>Your name</label>
+            <label htmlFor={nameInputId}>Your name</label>
             <span className="tip">At least 2 characters</span>
             <input
-              id={nameInput}
-              name={nameInput}
+              id={nameInputId}
+              name={nameInputId}
               type="text"
               required
               className="form-control"
               ref={register({ required: true, minLength: 2 })}
+              data-testid={nameInputId}
             />
-            <button className="btn btn-lg btn-primary" type="submit" disabled={!shouldNewGameBeActive}>
+            <button className="btn btn-lg btn-primary" type="submit" disabled={!shouldStartGameBeActive} data-testid={'start-game-button'}>
               Start Game
             </button>
           </div>
